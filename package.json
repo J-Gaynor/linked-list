@@ -1,0 +1,23 @@
+{
+  "name": "linked-list",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/J-Gaynor/linked-list#readme",
+  "bugs": {
+    "url": "https://github.com/J-Gaynor/linked-list/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/J-Gaynor/linked-list.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "linkedList.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
