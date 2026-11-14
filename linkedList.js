@@ -4,6 +4,7 @@ class LinkedList {
         this.head = null;
     }
 
+    // append(value) adds a new node containing value to the end of the list.
     append(value, current = this.head) {
         const newNode = new Node(value);
         if (this.head === null) {
@@ -17,6 +18,7 @@ class LinkedList {
         this.append(value, current.nextNode);
     }
 
+    // prepend(value) adds a new node containing value to the start of the list.
     prepend(value) {
         const newNode = new Node(value);
 
@@ -24,6 +26,46 @@ class LinkedList {
 
         this.head = newNode;
         return this.head;
+    }
+
+    // size() returns the total number of nodes in the list
+    size(current = this.head, count = 0) {
+        if (current === null) {
+            return count;
+        }
+        count++;
+        if (current.nextNode === null) {
+            return count;
+        }
+        return this.size(current.nextNode, count);
+    }
+
+    // head() should return the value of the first node in the list. 
+    // If the list is empty, it should return undefined
+    headValue() {
+        return this.head.value;
+    }
+
+    // tail() should return the value of the final node in the list.
+    // If the list is empty, it should return undefined.
+    tailValue(current = this.head) {
+        if (current.nextNode === null) {
+            return current.value;
+        }
+        return this.tailValue(current.nextNode);
+    }
+
+    // at(index) should return the value of the node at the given index.
+    // If there’s no node at the given index, it should return undefined.
+    at(n, count = 0, current = this.head) {
+        console.log([n, count, current]);
+        if (n === count) {
+            return current.value;
+        }
+        if (current.nextNode === null) {
+            return undefined;
+        }
+        return this.at(n, count + 1, current.nextNode);
     }
 };
 
@@ -35,21 +77,6 @@ class Node {
         this.nextNode = null;
     }
 }
-
-// append(value) adds a new node containing value to the end of the list.
-
-// prepend(value) adds a new node containing value to the start of the list.
-
-// size() returns the total number of nodes in the list
-
-// head() should return the value of the first node in the list. 
-// If the list is empty, it should return undefined
-
-// tail() should return the value of the final node in the list.
-// If the list is empty, it should return undefined.
-
-// at(index) should return the value of the node at the given index.
-// If there’s no node at the given index, it should return undefined.
 
 // pop() should remove the head node from the list and return its value.
 // If it’s used on an empty list, it should just return undefined.
