@@ -66,3 +66,56 @@ it("returns the value at an index", () => {
     expect(testLinkedList.at(2)).toBe("tiger");
     expect(testLinkedList.at(4)).toBe(undefined);
 })
+
+it("removes the head node and returns it", () => {
+    const testLinkedList = new LinkedList();
+    testLinkedList.append(nodeOne.value);
+    testLinkedList.append(nodeTwo.value);
+    testLinkedList.append(nodeThree.value);
+    expect(testLinkedList.pop()).toBe(0);
+    expect(testLinkedList.pop()).toBe("apple");
+})
+
+it("can determine whether a value is contained in the list", () => {
+    const testLinkedList = new LinkedList();
+    testLinkedList.append(nodeOne.value);
+    testLinkedList.append(nodeTwo.value);
+    testLinkedList.append(nodeThree.value);
+    testLinkedList.append(nodeFour.value);
+    expect(testLinkedList.contains(19742)).toBe(true);
+    expect(testLinkedList.contains(19743)).toBe(false);
+})
+
+it("can determine the index of a value", () => {
+    const testLinkedList = new LinkedList();
+    testLinkedList.append(nodeOne.value);
+    testLinkedList.append(nodeTwo.value);
+    testLinkedList.append(nodeThree.value);
+    testLinkedList.append(nodeFour.value);
+    expect(testLinkedList.findIndex(19743)).toBe(-1);
+    expect(testLinkedList.findIndex(0)).toBe(0);
+    expect(testLinkedList.findIndex(19742)).toBe(3);
+})
+
+it("returns a string list", () => {
+    const testLinkedList = new LinkedList();
+    expect(testLinkedList.toString()).toMatch("");
+
+    testLinkedList.append(nodeOne.value);
+    testLinkedList.append(nodeTwo.value);
+    testLinkedList.append(nodeThree.value);
+    testLinkedList.append(nodeFour.value);
+    expect(testLinkedList.toString()).toMatch("0 -> apple -> tiger -> 19742 -> null");
+})
+
+it("inserts value at index", () => {
+    const testLinkedList = new LinkedList();
+    testLinkedList.append("A");
+    testLinkedList.append("D");
+
+    // Insert "B" and "C" at index 1 (between "A" and "D")
+    testLinkedList.insertAt(1, "B", "C");
+
+    expect(testLinkedList.toString()).toBe("A -> B -> C -> D -> null");
+    expect(testLinkedList.size()).toBe(4);
+})
